@@ -15,8 +15,8 @@ public class AdminButtonPane extends HBox {
 
 	public AdminButtonPane() {
 
-		this.setAlignment(Pos.CENTER);
-		this.setSpacing(15);
+		this.setAlignment(Pos.BASELINE_CENTER);
+		this.setSpacing(30);
 
 		addBtn = new Button("Add");
 		clearBtn = new Button("Clear");
@@ -28,7 +28,7 @@ public class AdminButtonPane extends HBox {
 		this.getChildren().addAll(addBtn, clearBtn, removeBtn, submitBtn);
 
 		for (Node n : this.getChildren()) {
-			((Button) n).setPrefSize(70, 30); //set preferred size for each button
+			((Button) n).setPrefSize(75, 35); //set preferred size for each button
 		}
 
 	}

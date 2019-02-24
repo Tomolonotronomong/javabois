@@ -11,6 +11,7 @@ public class LoginButtons extends HBox {
 
     private Button admin;
     private Button customer;
+    private Button about;
 
     public Button getAdmin() {
         return admin;
@@ -20,19 +21,24 @@ public class LoginButtons extends HBox {
         return customer;
     }
 
+    public Button getAbout() { return about; }
+
 
 
     public LoginButtons(){
         admin = new Button("Admin");
         customer = new Button("Customer");
+        about = new Button("About");
 
-        this.setAlignment(Pos.CENTER);
+        this.setAlignment(Pos.BASELINE_CENTER);
+        this.setLayoutX(200);
+        this.setLayoutY(200);
         this.setSpacing(15);
 
-        this.getChildren().addAll(admin, customer);
+        this.getChildren().addAll(admin, customer, about);
 
         for (Node n : this.getChildren()) {
-            ((Button) n).setPrefSize(70, 30); //set preferred size for each button
+            ((Button) n).setPrefSize(75, 35); //set preferred size for each button
         }
 
     }
@@ -43,5 +49,9 @@ public class LoginButtons extends HBox {
 
     public void addAdminHandler(EventHandler<ActionEvent> handler) {
         admin.setOnAction(handler);
+    }
+
+    public void addAboutHandler(EventHandler<ActionEvent> handler) {
+        about.setOnAction(handler);
     }
 }

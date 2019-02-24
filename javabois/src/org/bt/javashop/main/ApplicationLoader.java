@@ -28,6 +28,7 @@ public class ApplicationLoader extends Application {
 
 		//creates stuff for customer page
 		Order order = new Order();
+
 		customerView = new CustomerView();
 		new CustomerController(customerView, order);
 
@@ -39,8 +40,10 @@ public class ApplicationLoader extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		new LoginController(loginView, stage, adminView, customerView);
-		stage.setTitle("Javabois");
-		stage.setScene(new Scene(customerView)); //TODO fix login
+		stage.setTitle("B-Bay");
+		stage.setScene(new Scene(loginView)); //TODO fix login
+		stage.setMinHeight(500);
+		stage.setMinWidth(500);
 		stage.show();
 	}
 
