@@ -28,7 +28,7 @@ public class RegisterController {
 	private RegisterMenuBar rmb;
 	private Cart model;
 
-	public RegisterController(RegisterRootPane view, Cart model) {
+	public RegisterController(AdminProductPane view, Cart model) {
 		//initialise model and view fields
 		this.model = model;
 

@@ -6,17 +6,17 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.Cart;
-import view.RegisterRootPane;
+import view.AdminProductPane;
 
 public class ApplicationLoader extends Application {
 
-	private RegisterRootPane view;
+	private AdminProductPane view;
 	
 	@Override
 	public void init() {
 		//create model and view and pass their references to the controller
 		Cart model = new Cart();
-		view = new RegisterRootPane();
+		view = new AdminProductPane();
 		new RegisterController(view, model);	
 	}
 	

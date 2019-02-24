@@ -1,12 +1,9 @@
 package view;
 
 import javafx.beans.binding.BooleanBinding;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Border;
@@ -21,8 +18,9 @@ import model.Product;
 
 public class ProductPane extends GridPane {
 
-	// private ComboBox<String> cboproductCode;
-	private TextField txtdescription, txtunitPrice ,txtproductCode;
+	private TextField description;
+    private TextField unitPrice;
+    private TextField productCode;
 
 	public ProductPane() {
 		//styling
@@ -46,56 +44,39 @@ public class ProductPane extends GridPane {
 		Label lblDescription = new Label("Description");
 		Label lblunitPrice = new Label("Price");
 
-		// setup combobox
-		//ObservableList<String> titles = FXCollections.observableArrayList("Mr", "Mrs", "Miss", "Ms", "Dr");
-		//cboproductCode = new ComboBox<String>(titles);
-		//cboproductCode.getSelectionModel().select(0);
-		//cboproductCode.setVisibleRowCount(4);
-		
 		// setup text fields
-		txtdescription = new TextField();
-		txtproductCode = new TextField();
-		txtunitPrice = new TextField();
+		description = new TextField();
+		productCode = new TextField();
+		unitPrice = new TextField();
 
 		//add controls and labels to container
 		this.add(lblproductCode, 0, 0);
-		this.add(txtproductCode, 1, 0);
+		this.add(productCode, 1, 0);
 
 		this.add(lblDescription, 0, 1);
-		this.add(txtdescription, 1, 1);
+		this.add(description, 1, 1);
 
-		this.add(txtunitPrice, 1, 2);
+		this.add(unitPrice, 1, 2);
 		this.add(lblunitPrice, 0, 2);
 	}
 
 	/* a method that returns a boolean binding based upon either textfield being empty */
 	public BooleanBinding isEitherFieldEmpty() {
-		return txtdescription.textProperty().isEmpty().or(txtunitPrice.textProperty().isEmpty());
+		return description.textProperty().isEmpty().or(unitPrice.textProperty().isEmpty());
 	}
 
 	// clear the input fields
 	public void clear() {
-		txtproductCode.setText("");
-		txtdescription.setText("");
-		txtunitPrice.setText("");
-	}
-	public static void main(String[] args){
-		String txtunitPrice = "100";
-		try
-		{
-			int i = Integer.parseInt(txtunitPrice);
-		}
-		catch (NumberFormatException nfe)
-		{
-			System.out.println("NumberFormatException: "+ nfe.getMessage());
-		}
+		productCode.setText("");
+		description.setText("");
+		unitPrice.setText("");
 	}
 
 	//returns a name object based on the input fields
 	public Product getProductInput() {
-		String productCode = txtproductCode.getText();
-		String description =  txtdescription.getText();
-		int unitPrice = 100; //hardcoded
+		String productCode = this.productCode.getText();
+		String description =  this.description.getText();
+		int unitPrice = Integer.parseInt(this.unitPrice.getText());
 		return new Product(productCode, description, unitPrice);
 	}
 
