@@ -1,12 +1,14 @@
 
 package org.bt.javashop.main;
 
-import org.bt.javashop.controller.AdminController;
 import javafx.application.Application;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.bt.javashop.controller.AdminController;
 import org.bt.javashop.controller.CustomerController;
 import org.bt.javashop.controller.LoginController;
+import org.bt.javashop.controller.ScreenController;
 import org.bt.javashop.model.Order;
 import org.bt.javashop.model.Stock;
 import org.bt.javashop.view.AdminStockView;
@@ -18,33 +20,35 @@ public class ApplicationLoader extends Application {
 	private AdminStockView adminView;
 	private CustomerView customerView;
 	private LoginView loginView;
+	private ScreenController screenController;
 
 	@Override
-	public void init() {
-		//creates stuff for admin page
+	public void start(Stage stage) throws Exception {
 		Stock model = new Stock();
-		adminView = new AdminStockView();
-		new AdminController(adminView, model);
-
-		//creates stuff for customer page
 		Order order = new Order();
 
 		customerView = new CustomerView();
-		new CustomerController(customerView, order);
-
-		//Login Screen components
+		adminView = new AdminStockView();
 		loginView = new LoginView();
 
-	}
-	
-	@Override
-	public void start(Stage stage) throws Exception {
-		new LoginController(loginView, stage, adminView, customerView);
+
+		Group root = new Group(loginView);
+		Scene main = new Scene(root);
+		stage.setScene(main); //TODO fix login
+		screenController = new ScreenController(main);
+		screenController.addScreen("customerView", customerView);
+		screenController.addScreen("adminView", adminView);
+		screenController.addScreen("loginView", loginView);
+
 		stage.setTitle("B-Bay");
-		stage.setScene(new Scene(customerView)); //TODO fix login
 		stage.setMinHeight(500);
 		stage.setMinWidth(500);
+
+		new CustomerController(customerView, order, screenController);
+		new LoginController(loginView, screenController);
+		new AdminController(adminView, model);
 		stage.show();
+
 	}
 
 	public static void main(String[] args) {

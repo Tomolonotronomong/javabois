@@ -13,10 +13,13 @@ public class CustomerController {
 
     private Order order;
     private CustomerView customerView;
+    private ScreenController screenController;
 
-    public CustomerController(CustomerView customerView, Order order) {
+    public CustomerController(CustomerView customerView, Order order, ScreenController screenController) {
         this.order = order;
         this.customerView = customerView;
+        this.screenController = screenController;
+
     }
 
     private void attachEventHandlers() {
