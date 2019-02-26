@@ -13,7 +13,7 @@ public class AdminStockView extends BorderPane {
 	
 	public AdminStockView() {
 		//background
-		this.setStyle("-fx-background-color: #415D78;");
+		this.setStyle("-fx-background-color: #ff4500;");
 		
 		inputPane = new ProductInputPane();
 		productListPane = new ProductListPane();

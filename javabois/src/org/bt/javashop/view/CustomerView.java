@@ -31,7 +31,7 @@ public class CustomerView extends BorderPane {
 
 
     public CustomerView(){
-        this.setStyle("-fx-background-color: #415D78;");
+        this.setStyle("-fx-background-color: #87cefa;");
 
         stock = new ProductListPane();
         cart = new ProductListPane();

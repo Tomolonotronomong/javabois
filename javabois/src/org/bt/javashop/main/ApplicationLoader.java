@@ -41,7 +41,7 @@ public class ApplicationLoader extends Application {
 	public void start(Stage stage) throws Exception {
 		new LoginController(loginView, stage, adminView, customerView);
 		stage.setTitle("B-Bay");
-		stage.setScene(new Scene(loginView)); //TODO fix login
+		stage.setScene(new Scene(customerView)); //TODO fix login
 		stage.setMinHeight(500);
 		stage.setMinWidth(500);
 		stage.show();
