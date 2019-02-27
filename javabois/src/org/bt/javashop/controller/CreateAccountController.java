@@ -14,9 +14,11 @@ public class CreateAccountController {
     public CreateAccountController(CreateAccountView createAccountView, ScreenController screenController) {
         this.createAccountFields = createAccountView.getCreateAccountFields();
         this.screenController = screenController;
-        //this.attachHandlers();
+        this.attachHandlers();
     }
-    //private void attachHandlers(){
-      //  this.createAccountFields.addCustomerHandler(e -> screenController.activate("customerView"));
 
+    private void attachHandlers() {
+        this.createAccountFields.addCustomerHandler(e -> System.out.println("Account Created"));
+
+    }
 }

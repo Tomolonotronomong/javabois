@@ -1,5 +1,7 @@
 package org.bt.javashop.view;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -32,5 +34,9 @@ public class CreateAccountFields extends VBox {
 
 
         this.getChildren().addAll(username,firstname,surname,password1,create);
+    }
+
+    public void addCustomerHandler(EventHandler<ActionEvent> handler) {
+        create.setOnAction(handler);
     }
 }
