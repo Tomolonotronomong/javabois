@@ -12,6 +12,7 @@ import org.bt.javashop.controller.ScreenController;
 import org.bt.javashop.model.Order;
 import org.bt.javashop.model.Stock;
 import org.bt.javashop.view.AdminStockView;
+import org.bt.javashop.view.CreateAccountView;
 import org.bt.javashop.view.CustomerView;
 import org.bt.javashop.view.LoginView;
 
@@ -21,6 +22,7 @@ public class ApplicationLoader extends Application {
 	private CustomerView customerView;
 	private LoginView loginView;
 	private ScreenController screenController;
+	private CreateAccountView createAccountView;
 
 	@Override
 	public void start(Stage stage) throws Exception {
@@ -30,15 +32,17 @@ public class ApplicationLoader extends Application {
 		customerView = new CustomerView();
 		adminView = new AdminStockView();
 		loginView = new LoginView();
+		createAccountView = new CreateAccountView();
 
 
-		Group root = new Group(loginView);
+		Group root = new Group(createAccountView);
 		Scene main = new Scene(root);
 		stage.setScene(main); //TODO fix login
 		screenController = new ScreenController(main);
 		screenController.addScreen("customerView", customerView);
 		screenController.addScreen("adminView", adminView);
 		screenController.addScreen("loginView", loginView);
+		screenController.addScreen("createAccountView", createAccountView );
 
 		stage.setTitle("B-Bay");
 		stage.setMinHeight(500);
