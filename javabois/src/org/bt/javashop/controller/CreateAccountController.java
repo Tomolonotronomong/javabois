@@ -1,9 +1,8 @@
 package org.bt.javashop.controller;
 
 import javafx.stage.Stage;
-import org.bt.javashop.view.CreateAccountFields;
-import org.bt.javashop.view.CreateAccountView;
-import org.bt.javashop.view.LoginView;
+import org.bt.javashop.view.create.CreateAccountFields;
+import org.bt.javashop.view.create.CreateAccountView;
 
 public class CreateAccountController {
 
@@ -18,7 +17,7 @@ public class CreateAccountController {
     }
 
     private void attachHandlers() {
-        this.createAccountFields.addCustomerHandler(e -> System.out.println("Account Created"));
+        this.createAccountFields.addCreateHandler(e -> System.out.println("Account Created"));
 
     }
 }

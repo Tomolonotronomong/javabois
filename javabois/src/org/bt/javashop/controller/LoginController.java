@@ -1,7 +1,7 @@
 package org.bt.javashop.controller;
 import javafx.stage.Stage;
-import org.bt.javashop.view.LoginButtons;
-import org.bt.javashop.view.LoginView;
+import org.bt.javashop.view.login.LoginButtons;
+import org.bt.javashop.view.login.LoginView;
 
 public class LoginController {
 
@@ -18,6 +18,7 @@ public class LoginController {
     private void attachHandlers(){
         this.loginButtons.addCustomerHandler(e -> screenController.activate("customerView"));
         this.loginButtons.addAdminHandler(e -> screenController.activate("adminView"));
+        this.loginButtons.addCreateHandler(e -> screenController.activate("createAccountView"));
     }
 
 }

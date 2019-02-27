@@ -1,4 +1,4 @@
-package org.bt.javashop.view;
+package org.bt.javashop.view.create;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -6,8 +6,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class CreateAccountFields extends VBox {
@@ -31,12 +29,10 @@ public class CreateAccountFields extends VBox {
         this.setAlignment(Pos.BASELINE_CENTER);
         this.setLayoutX(200);
         this.setLayoutY(200);
-
-
-        this.getChildren().addAll(username,firstname,surname,password1,create);
+        this.getChildren().addAll(username, firstname, surname, password1, create);
     }
 
-    public void addCustomerHandler(EventHandler<ActionEvent> handler) {
+    public void addCreateHandler(EventHandler<ActionEvent> handler) {
         create.setOnAction(handler);
     }
 }

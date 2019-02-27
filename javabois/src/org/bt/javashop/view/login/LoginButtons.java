@@ -1,4 +1,4 @@
-package org.bt.javashop.view;
+package org.bt.javashop.view.login;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,6 +12,11 @@ public class LoginButtons extends HBox {
     private Button admin;
     private Button customer;
     private Button about;
+    private Button createAccount;
+
+    public Button getCreateAccount() {
+        return createAccount;
+    }
 
     public Button getAdmin() {
         return admin;
@@ -29,16 +34,17 @@ public class LoginButtons extends HBox {
         admin = new Button("Admin");
         customer = new Button("Customer");
         about = new Button("About");
+        createAccount = new Button("No account?");
 
         this.setAlignment(Pos.BASELINE_CENTER);
         this.setLayoutX(200);
         this.setLayoutY(200);
         this.setSpacing(15);
 
-        this.getChildren().addAll(admin, customer, about);
+        this.getChildren().addAll(admin, customer, about, createAccount);
 
         for (Node n : this.getChildren()) {
-            ((Button) n).setPrefSize(75, 35); //set preferred size for each button
+            ((Button) n).setPrefSize(100, 35); //set preferred size for each button
         }
 
     }
@@ -53,5 +59,9 @@ public class LoginButtons extends HBox {
 
     public void addAboutHandler(EventHandler<ActionEvent> handler) {
         about.setOnAction(handler);
+    }
+
+    public void addCreateHandler(EventHandler<ActionEvent> handler){
+        createAccount.setOnAction(handler);
     }
 }

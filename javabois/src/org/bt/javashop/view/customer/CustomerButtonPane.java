@@ -1,4 +1,4 @@
-package org.bt.javashop.view;
+package org.bt.javashop.view.customer;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

@@ -1,8 +1,10 @@
-package org.bt.javashop.view;
+package org.bt.javashop.view.customer;
 
 import javafx.geometry.Insets;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import org.bt.javashop.view.ProductListPane;
+import org.bt.javashop.view.RegisterMenuBar;
 
 public class CustomerView extends BorderPane {
 

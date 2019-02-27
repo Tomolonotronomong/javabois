@@ -5,16 +5,13 @@ import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.bt.javashop.controller.AdminController;
-import org.bt.javashop.controller.CustomerController;
-import org.bt.javashop.controller.LoginController;
-import org.bt.javashop.controller.ScreenController;
+import org.bt.javashop.controller.*;
 import org.bt.javashop.model.Order;
 import org.bt.javashop.model.Stock;
-import org.bt.javashop.view.AdminStockView;
-import org.bt.javashop.view.CreateAccountView;
-import org.bt.javashop.view.CustomerView;
-import org.bt.javashop.view.LoginView;
+import org.bt.javashop.view.admin.AdminStockView;
+import org.bt.javashop.view.create.CreateAccountView;
+import org.bt.javashop.view.customer.CustomerView;
+import org.bt.javashop.view.login.LoginView;
 
 public class ApplicationLoader extends Application {
 
@@ -26,19 +23,23 @@ public class ApplicationLoader extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
+		//create the models
 		Stock model = new Stock();
 		Order order = new Order();
 
+		//create the views
 		customerView = new CustomerView();
 		adminView = new AdminStockView();
 		loginView = new LoginView();
 		createAccountView = new CreateAccountView();
 
 
-		Group root = new Group(createAccountView);
+		//add the root node
+		Group root = new Group(loginView);
 		Scene main = new Scene(root);
 		stage.setScene(main); //TODO fix login
 		screenController = new ScreenController(main);
+		//add the available views to the controller
 		screenController.addScreen("customerView", customerView);
 		screenController.addScreen("adminView", adminView);
 		screenController.addScreen("loginView", loginView);
@@ -48,9 +49,11 @@ public class ApplicationLoader extends Application {
 		stage.setMinHeight(500);
 		stage.setMinWidth(500);
 
+		//create the controller
 		new CustomerController(customerView, order, screenController);
 		new LoginController(loginView, screenController);
 		new AdminController(adminView, model);
+		new CreateAccountController(createAccountView, screenController);
 		stage.show();
 
 	}

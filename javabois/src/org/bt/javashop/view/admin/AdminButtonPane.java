@@ -1,4 +1,4 @@
-package org.bt.javashop.view;
+package org.bt.javashop.view.admin;
 
 import javafx.beans.binding.BooleanBinding;
 import javafx.event.ActionEvent;

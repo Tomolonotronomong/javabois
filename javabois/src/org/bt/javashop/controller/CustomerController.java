@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import org.bt.javashop.model.Order;
-import org.bt.javashop.view.CustomerView;
+import org.bt.javashop.view.customer.CustomerView;
 
 import java.io.*;
 

@@ -9,6 +9,8 @@ import org.bt.javashop.model.LineItem;
 import org.bt.javashop.model.Product;
 import org.bt.javashop.model.Stock;
 import org.bt.javashop.view.*;
+import org.bt.javashop.view.admin.AdminButtonPane;
+import org.bt.javashop.view.admin.AdminStockView;
 
 
 @SuppressWarnings("Duplicates")
