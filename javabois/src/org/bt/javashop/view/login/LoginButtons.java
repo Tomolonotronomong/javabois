@@ -34,7 +34,7 @@ public class LoginButtons extends HBox {
         admin = new Button("Admin");
         customer = new Button("Customer");
         about = new Button("About");
-        createAccount = new Button("No account?");
+        createAccount = new Button("Create an Account");
 
         this.setAlignment(Pos.BASELINE_CENTER);
         this.setLayoutX(200);

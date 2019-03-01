@@ -16,8 +16,8 @@ public class LoginController {
     }
 
     private void attachHandlers(){
-        this.loginButtons.addCustomerHandler(e -> screenController.activate("customerView"));
-        this.loginButtons.addAdminHandler(e -> screenController.activate("adminView"));
+        this.loginButtons.addCustomerHandler(e -> screenController.activate("authView"));
+        this.loginButtons.addAdminHandler(e -> screenController.activate("adminAuthView"));
         this.loginButtons.addCreateHandler(e -> screenController.activate("createAccountView"));
     }
 

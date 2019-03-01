@@ -8,6 +8,9 @@ import javafx.stage.Stage;
 import org.bt.javashop.controller.*;
 import org.bt.javashop.model.Order;
 import org.bt.javashop.model.Stock;
+import org.bt.javashop.view.Authentication.AdminAuthView;
+import org.bt.javashop.view.Authentication.AuthView;
+import org.bt.javashop.view.Checkout.CheckoutView;
 import org.bt.javashop.view.admin.AdminStockView;
 import org.bt.javashop.view.create.CreateAccountView;
 import org.bt.javashop.view.customer.CustomerView;
@@ -20,6 +23,9 @@ public class ApplicationLoader extends Application {
 	private LoginView loginView;
 	private ScreenController screenController;
 	private CreateAccountView createAccountView;
+	private AuthView authView;
+	private AdminAuthView adminAuthView;
+	private CheckoutView checkoutView;
 
 	@Override
 	public void start(Stage stage) throws Exception {
@@ -32,6 +38,10 @@ public class ApplicationLoader extends Application {
 		adminView = new AdminStockView();
 		loginView = new LoginView();
 		createAccountView = new CreateAccountView();
+		authView = new AuthView();
+		adminAuthView = new AdminAuthView();
+		checkoutView = new CheckoutView();
+
 
 
 		//add the root node
@@ -44,6 +54,10 @@ public class ApplicationLoader extends Application {
 		screenController.addScreen("adminView", adminView);
 		screenController.addScreen("loginView", loginView);
 		screenController.addScreen("createAccountView", createAccountView );
+		screenController.addScreen("authView", authView);
+		screenController.addScreen("adminAuthView", adminAuthView);
+		screenController.addScreen("checkoutView", checkoutView);
+
 
 		stage.setTitle("B-Bay");
 		stage.setMinHeight(500);
@@ -54,6 +68,9 @@ public class ApplicationLoader extends Application {
 		new LoginController(loginView, screenController);
 		new AdminController(adminView, model);
 		new CreateAccountController(createAccountView, screenController);
+		new AuthController(authView, screenController);
+		new AdminAuthController(adminAuthView, screenController);
+		new CheckoutController (checkoutView, screenController);
 		stage.show();
 
 	}
