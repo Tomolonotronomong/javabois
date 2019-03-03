@@ -1,5 +1,6 @@
 package org.bt.javashop.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Objects;
  *
  * @author la
  */
-public class Product implements Comparable<Product> {
+public class Product implements Comparable<Product>, Serializable {
 
     //fields
     private String productCode;
@@ -55,9 +56,7 @@ public class Product implements Comparable<Product> {
 
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + ":[productCode=" + productCode
-                + ", description=" + description
-                + ", unitPrice =" + unitPrice + "]";
+        return productCode + " - " + description + ", £" + unitPrice;
     }
 
     @Override

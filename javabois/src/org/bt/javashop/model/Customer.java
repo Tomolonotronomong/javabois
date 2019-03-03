@@ -1,5 +1,7 @@
 package org.bt.javashop.model;
 
+import java.io.Serializable;
+
 /**
  * A customer has a name and customer identity number
  * and a number of reward points.
@@ -7,7 +9,7 @@ package org.bt.javashop.model;
  * @author la
  */
 
-public class Customer {
+public class Customer implements Serializable {
     //fields
     private Name customerName;
     private String customerId;

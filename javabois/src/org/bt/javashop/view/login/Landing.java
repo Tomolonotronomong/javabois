@@ -6,14 +6,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-public class LoginView extends GridPane {
+public class Landing extends GridPane {
     private LoginButtons buttons;
     public LoginButtons getButtons() {
         return buttons;
     }
 
 
-    public LoginView(){
+    public Landing(){
         buttons = new LoginButtons();
         this.setStyle("-fx-background-color: #87cefa;");
         Text message = new Text("B - Bay");

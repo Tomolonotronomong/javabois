@@ -1,7 +1,7 @@
 package org.bt.javashop.controller;
 import javafx.stage.Stage;
 import org.bt.javashop.view.login.LoginButtons;
-import org.bt.javashop.view.login.LoginView;
+import org.bt.javashop.view.login.Landing;
 
 public class LoginController {
 
@@ -9,8 +9,8 @@ public class LoginController {
     private Stage stage;
     private ScreenController screenController;
 
-    public LoginController(LoginView loginView, ScreenController screenController){
-        this.loginButtons = loginView.getButtons();
+    public LoginController(Landing landing, ScreenController screenController){
+        this.loginButtons = landing.getButtons();
         this.screenController = screenController;
         this.attachHandlers();
     }

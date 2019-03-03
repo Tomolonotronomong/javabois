@@ -31,7 +31,6 @@ public class CustomerView extends BorderPane {
     }
 
 
-
     public CustomerView(){
         this.setStyle("-fx-background-color: #87cefa;");
 
@@ -47,6 +46,7 @@ public class CustomerView extends BorderPane {
         BorderPane rootContainer = new BorderPane();
         rootContainer.setTop(topContainer);
         rootContainer.setCenter(cart);
+        rootContainer.setBottom(customerButtons);
         rootContainer.setPadding(new Insets(20,20,20,20));
         this.setTop(menuBar);
         this.setCenter(rootContainer);

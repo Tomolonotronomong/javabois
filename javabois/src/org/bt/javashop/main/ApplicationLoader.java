@@ -14,13 +14,13 @@ import org.bt.javashop.view.Checkout.CheckoutView;
 import org.bt.javashop.view.admin.AdminStockView;
 import org.bt.javashop.view.create.CreateAccountView;
 import org.bt.javashop.view.customer.CustomerView;
-import org.bt.javashop.view.login.LoginView;
+import org.bt.javashop.view.login.Landing;
 
 public class ApplicationLoader extends Application {
 
 	private AdminStockView adminView;
 	private CustomerView customerView;
-	private LoginView loginView;
+	private Landing landing;
 	private ScreenController screenController;
 	private CreateAccountView createAccountView;
 	private AuthView authView;
@@ -30,43 +30,42 @@ public class ApplicationLoader extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		//create the models
-		Stock model = new Stock();
+		Stock stock = new Stock();
 		Order order = new Order();
 
 		//create the views
 		customerView = new CustomerView();
 		adminView = new AdminStockView();
-		loginView = new LoginView();
+		landing = new Landing();
 		createAccountView = new CreateAccountView();
 		authView = new AuthView();
 		adminAuthView = new AdminAuthView();
 		checkoutView = new CheckoutView();
 
 
-
 		//add the root node
-		Group root = new Group(loginView);
+		Group root = new Group(landing);
 		Scene main = new Scene(root);
 		stage.setScene(main); //TODO fix login
 		screenController = new ScreenController(main);
+
 		//add the available views to the controller
 		screenController.addScreen("customerView", customerView);
 		screenController.addScreen("adminView", adminView);
-		screenController.addScreen("loginView", loginView);
+		screenController.addScreen("landing", landing);
 		screenController.addScreen("createAccountView", createAccountView );
 		screenController.addScreen("authView", authView);
 		screenController.addScreen("adminAuthView", adminAuthView);
 		screenController.addScreen("checkoutView", checkoutView);
-
 
 		stage.setTitle("B-Bay");
 		stage.setMinHeight(500);
 		stage.setMinWidth(500);
 
 		//create the controller
-		new CustomerController(customerView, order, screenController);
-		new LoginController(loginView, screenController);
-		new AdminController(adminView, model);
+		new CustomerController(customerView, order, screenController, stock);
+		new LoginController(landing, screenController);
+		new AdminController(adminView, stock);
 		new CreateAccountController(createAccountView, screenController);
 		new AuthController(authView, screenController);
 		new AdminAuthController(adminAuthView, screenController);

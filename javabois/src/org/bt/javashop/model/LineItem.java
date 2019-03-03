@@ -1,6 +1,8 @@
 package org.bt.javashop.model;
 
 
+import java.io.Serializable;
+
 /**
  * An order can be placed for a given quantity of a item
  * The cost of the order is given in pence and is calculated by
@@ -13,7 +15,7 @@ package org.bt.javashop.model;
  *
  * @author la
  */
-public class LineItem implements Comparable<LineItem> {
+public class LineItem implements Comparable<LineItem>, Serializable {
 
     //fields
     private Product item;
@@ -60,7 +62,8 @@ public class LineItem implements Comparable<LineItem> {
 
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + ":[item=" + item + ", quantity=" + quantity + "]";
+        //TODO fix
+        return item + ", quantity=" + quantity;
     }
 
     @Override

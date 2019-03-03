@@ -1,10 +1,11 @@
 package org.bt.javashop.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Stock implements Iterable<LineItem> {
+public class Stock implements Iterable<LineItem>, Serializable {
 
     private List<LineItem> stock;
 

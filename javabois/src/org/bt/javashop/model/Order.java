@@ -1,5 +1,6 @@
 package org.bt.javashop.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -17,7 +18,7 @@ import java.util.List;
  *
  * @author la
  */
-public class Order implements Iterable<LineItem> {
+public class Order implements Iterable<LineItem>, Serializable {
 
 	//fields
 	private List<LineItem> lineItems;

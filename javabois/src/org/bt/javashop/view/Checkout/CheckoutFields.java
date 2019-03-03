@@ -18,12 +18,6 @@ public class CheckoutFields extends VBox {
     private TextField postcode;
     private Button order;
 
-
-
-
-
-
-
     public CheckoutFields(){
 
         rb1 = new RadioButton("Home Delivery");

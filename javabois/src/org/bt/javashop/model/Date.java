@@ -1,4 +1,5 @@
 package org.bt.javashop.model;
+import java.io.Serializable;
 import java.text.DecimalFormat; //imports DecimalFormat class
 
 /**
@@ -8,7 +9,7 @@ import java.text.DecimalFormat; //imports DecimalFormat class
  * @author la
  */
 
-public class Date {
+public class Date implements Serializable {
     //fields
     private int day;    //1..31
     private int month;  //1..12

@@ -4,21 +4,23 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import org.bt.javashop.model.Order;
+import org.bt.javashop.model.Stock;
 import org.bt.javashop.view.customer.CustomerView;
-
-import java.io.*;
 
 @SuppressWarnings("Duplicates")
 public class CustomerController {
 
     private Order order;
+    private Stock stock;
     private CustomerView customerView;
     private ScreenController screenController;
 
-    public CustomerController(CustomerView customerView, Order order, ScreenController screenController) {
+    public CustomerController(CustomerView customerView, Order order, ScreenController screenController, Stock stock) {
         this.order = order;
         this.customerView = customerView;
         this.screenController = screenController;
+        this.stock = stock;
+        this.attachEventHandlers();
 
     }
 
@@ -31,41 +33,24 @@ public class CustomerController {
                 customerView.getCart().getSelectedItem()));
         customerView.getMenuBar().addMultiSelectHandler(e -> this.alertDialogBuilder(Alert.AlertType.CONFIRMATION, "Name Selecteds", null, "You selected " +
                 customerView.getCart().getSelectedItems()));
+        customerView.getCustomerButtons().addCheckoutHandler(e -> this.screenController.activate("checkoutView"));
     }
 
     private class SaveMenuHandler implements EventHandler<ActionEvent> {
 
         public void handle(ActionEvent e) {
-            //save the data org.bt.javashop.stock
-            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("registerObj.dat"));) {
-
-                oos.writeObject(order);
-                oos.flush();
-
-                alertDialogBuilder(Alert.AlertType.INFORMATION, "Information Dialog", "Save success", "Order saved to registerObj.dat");
-            }
-            catch (IOException ioExcep){
-                System.out.println("Error saving");
-            }
+           DatabaseController database = new FileController("database.dat");
         }
     }
 
     private class LoadMenuHandler implements EventHandler<ActionEvent> {
 
         public void handle(ActionEvent e) {
-            //load in the data org.bt.javashop.stock
-            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("registerObj.dat"));) {
-
-                order = (Order) ois.readObject();
-
-                alertDialogBuilder(Alert.AlertType.INFORMATION, "Information Dialog", "Load success", "Order loaded from registerObj.dat");
-            }
-            catch (IOException ioExcep){
-                System.out.println("Error loading");
-            }
-            catch (ClassNotFoundException c) {
-                System.out.println("Class Not found");
-            }
+            DatabaseController database = new FileController("database.dat");
+            stock = (Stock) database.readData();
+            System.out.println("Loaded products");
+            //TODO fix
+            customerView.getStock().addProduct(stock.getStock().get(0).getProduct());
 
         }
     }

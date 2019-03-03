@@ -25,7 +25,7 @@ public class AdminController {
 
 	public AdminController(AdminStockView view, Stock stock) {
 		this.stock = stock;
-		//this is silly
+		//TODO fix
 		productInputPane = view.getProductPane();
 		adminButtonPane = view.getButtonPane();
 		productListPane = view.getViewPane();
@@ -85,7 +85,7 @@ public class AdminController {
 	private class SaveMenuHandler implements EventHandler<ActionEvent> {
 
 		public void handle(ActionEvent e) {
-			DatabaseController database = new DatabaseController("database.dat");
+			DatabaseController database = new FileController("database.dat");
 			database.writeData(stock);
 		}
 	}
@@ -93,7 +93,7 @@ public class AdminController {
 	private class LoadMenuHandler implements EventHandler<ActionEvent> {
 
 		public void handle(ActionEvent e) {
-			DatabaseController database = new DatabaseController("database.dat");
+			DatabaseController database = new FileController("database.dat");
 			stock = (Stock) database.readData();
 		}
 	}
